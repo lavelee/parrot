@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./css/reset.css">
-  <link rel="stylesheet" href="./css/module.css">
-  <link rel="stylesheet" href="./css/style.css">
-  <!-- <link rel="stylesheet" href="./css/grid.css"> -->
-  <title>team6 join</title>
-</head>
-<body>
+<template>
 
 <div class="wrapper">
 <section class="join">
@@ -18,7 +6,7 @@
   <form action="http://www.w3schools.com/html/action_page.php" method="post" enctype="multipart/form-data">
   <!-- <form action="localhost:3030" method="get"> -->
     <fieldset class="row1 join_essential">
-      <legend class="readable-hidden">필수 입력사항</legend>
+      <legend class="readable-hidden">필수입력사항</legend>
       <label for="join_id" class="readable-hidden" >아이디</label>
       <input type="text" id="join_id" name="join_id" required placeholder="아이디">
       <label for="join_pass_1" class="readable-hidden" >비밀번호</label>
@@ -53,7 +41,20 @@
   <a class="close" href=""><img src="" alt="닫기버튼"></a>
 </section>
 </div>
-</body>
+
+</template>
 
 
-</html>
+
+<script>
+export default {
+  name: 'join',
+  components: { }
+}
+</script>
+
+
+
+<style lang='sass'>
+
+</style>

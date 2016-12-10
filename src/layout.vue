@@ -1,4 +1,6 @@
 <template>
+<div class="wrapper">
+
 
 <!-- 메뉴 부분 -->
 <header>
@@ -39,8 +41,12 @@
   </div>
 
 </header>
-</template>
+<contents></contents>
+<join></join>
+<write></write>
 
+</div>
+</template>
 
 <style lang='sass'>
 

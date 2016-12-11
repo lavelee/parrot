@@ -52,8 +52,12 @@
 </div>
 </template>
 
-<style lang='sass'>
+<style lang='scss'>
+  @import './assets/font-awesome/scss/font-awesome.scss'
+</style>
 
+<style lang='sass'>
+@import ./layout.sass
 </style>
 
 <script>

@@ -1,7 +1,6 @@
 <template>
 <div class="wrapper">
 
-
 <!-- 메뉴 부분 -->
 <header>
   <h1><a href="/index.html">Parrot</a></h1>
@@ -43,21 +42,26 @@
     <a href=""><img src="" alt="닫기버튼"></a>
   </section>
   </div>
-
 </header>
-<contents></contents>
-<join></join>
-<write></write>
+
+<!-- 메인 컨텐츠 부분 -->
+<div class="main-contents">
+  <contents></contents>
+  <join></join>
+  <write></write>
+</div>
 
 </div>
 </template>
 
 <style lang='scss'>
-  @import './assets/font-awesome/scss/font-awesome.scss'
+  @import './styles/reset.scss';
+  @import './assets/font-awesome/scss/font-awesome.scss';
 </style>
 
 <style lang='sass'>
-@import ./layout.sass
+  @import './styles/modules.sass'
+  @import './layout.sass'
 </style>
 
 <script>

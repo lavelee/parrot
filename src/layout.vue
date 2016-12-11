@@ -20,7 +20,11 @@
       <li><a>좋아요누른글</a></li>
       <li><a>가까운글</a></li>
     </ul>
-  <form action="serch"><img src="/" alt="searchicon"><input type="search"><button type="button" name="button">search</button></form>
+  <form action="serch">
+    <img src="/" alt="searchicon">
+    <input type="search">
+    <button type="button" name="button">search</button>
+  </form>
   </nav>
 
   <!-- 로그인 팝업창 부분 -->

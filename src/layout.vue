@@ -1,6 +1,27 @@
 <template>
 <div class="wrapper">
 
+  <!-- 로그인 팝업창 부분 -->
+  <div class="login-dim">
+  <section class="login">
+    <h1 class="readable-hidden">로그인</h1>
+    <form class="login_input" action="">
+      <label for="login_id" class="readable-hidden">아이디</label>
+      <input type="text" id="login_id" required name="login_id">
+      <label for="login_pass" class="readable-hidden">비밀번호</label>
+      <input type="password" id="login_pass" required name="login_pass">
+      <div class="login_action">
+        <input type="submit" value="로그인"></input>
+        <a href="">회원가입</a>
+      </div>
+    </form>
+    <div class="login-other">
+      <a href="">비밀번호찾기</a>
+      <a href=""><img src="" alt="닫기버튼"></a>
+    </div>
+  </section>
+  </div>
+
 <!-- 메뉴 부분 -->
 <header>
   <h1><a href="/index.html">Parrot</a></h1>
@@ -9,7 +30,7 @@
   <h2>매뉴</h2>
   <nav class="menu-icon"><img src="/" alt="">
     <ul class="menu-list hidden">매뉴
-      <li><a href="./join.html" class="loggedin-hidden">회원가입</a></li>
+      <li><a href="./join.html" class="loggedin-hidden">회원 가입</a></li>
       <li><h2 class="readable-hidden">접속자정보</h2></li>
       <li><img src="/" alt="아바타" class= "login-hidden">사용자 이미지</li>
       <li><p class= "login-hidden">id e-mail</p></li>
@@ -26,22 +47,6 @@
   </form>
   </nav>
 
-  <!-- 로그인 팝업창 부분 -->
-  <div class="login-dim">
-  <section class="login">
-    <h1 class="readable-hidden">로그인</h1>
-    <form class="login" action="">
-      <label for="login_id" class="readable-hidden">아이디</label>
-      <input type="text" id="login_id">
-      <label for="login_pass" class="readable-hidden">비밀번호</label>
-      <input type="text" id="login_pass">
-      <button>로그인</button>
-      <a href="">회원가입</a>
-    </form>
-    <a href="">비밀번호찾기</a>
-    <a href=""><img src="" alt="닫기버튼"></a>
-  </section>
-  </div>
 </header>
 
 <!-- 메인 컨텐츠 부분 -->

@@ -1,10 +1,10 @@
-// var functionName = (function(global){
+// var functionName = function(){
 //   'use strict';
 //   var _functionName = function(variables){
 //     // variables discription
 //   }
 //   return _functionName;
-// })();
+// }();
 
 var toggleClass = function(){
   'use strict';
@@ -21,10 +21,19 @@ var toggleClass = function(){
   return _toggleClass;
 }();
 
+var delClass = function(){
+  'use strict';
+  var _delClass = function(query, cls){
+    var _element = document.querySelector(query);
+    _element.classList.remove(cls);
+  }
+  return _delClass;
+}();
 
 //function 일때는 위에 올려도 되는데, var를 내보낼때는
 // 가장 아래에 있어야 한다.  아니면 undefined
 module.exports = {
-  toggleClass: toggleClass
+  toggleClass: toggleClass,
+  delClass: delClass
   //키 이름을 '' 로 감싸도 되고, 안감싸도 명칭으로 동작한다.
 }

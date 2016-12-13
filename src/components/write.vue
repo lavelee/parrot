@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="content-wrapper">
     <form action="http://www.w3schools.com/html/action_page.php" method="post" enctype="multipart/form-data">
 
       <textarea name="text" rows="25" cols="80" autofocus="autofocus" placeholder="write here"></textarea>

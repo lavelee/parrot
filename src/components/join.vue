@@ -1,6 +1,6 @@
 <template>
 
-<div class="wrapper">
+<div class="content-wrapper">
 <section class="join">
   <h1 class="readable-hidden">회원가입</h1>
   <form action="http://www.w3schools.com/html/action_page.php" method="post" enctype="multipart/form-data">

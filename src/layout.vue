@@ -1,7 +1,10 @@
 <template>
+<!-- <div class="wrapper menu-active"> -->
 <div class="wrapper">
+<h1 class="readable-hidden">Parrot</h1>
 
   <!-- 로그인 팝업창 부분 -->
+  <!-- <div class="login-dim"> -->
   <div class="login-dim hidden">
   <section class="login">
     <h1 class="readable-hidden">로그인</h1>
@@ -23,13 +26,13 @@
   </div>
 
 <!-- 메뉴 부분 -->
-<header>
-  <h1><a href="/index.html">Parrot</a></h1>
-  <h2 class="loggedin-hidden"><img src="/" alt="로그인아이콘">로그인</h2>
-  <h2 class="login-hidden"><img src="/" alt="글쓰기아이콘">글쓰기</h2>
-  <h2>매뉴</h2>
-  <nav class="menu-icon"><img src="/" alt="">
-    <ul class="menu-list hidden">매뉴
+<header class="parrot-header">
+  <a href="/index.html"><h1>Parrot</h1></a>
+  <a href="#" class="login-icon" title="로그인"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+  <a href="#" class="write-icon" title="글쓰기"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+  <button class="open-menu-icon" title="메뉴" v-on:click="openMenu('.wrapper','menu-active')" ><i class="fa fa-bars" aria-hidden="true"></i></button>
+  <nav class="app-menu"><img src="/" alt="">
+    <ul class="menu-list hidden">메뉴
       <li><a href="./join.html" class="loggedin-hidden">회원가입</a></li>
       <li><h2 class="readable-hidden">접속자정보</h2></li>
       <li><img src="/" alt="아바타" class= "login-hidden">사용자 이미지</li>
@@ -46,15 +49,15 @@
     <button type="button" name="button">search</button>
   </form>
   </nav>
-
 </header>
 
 <!-- 메인 컨텐츠 부분 -->
-<div class="main-contents">
+<router-view></router-view>
+<!-- <div class="main-contents">
   <contents></contents>
   <join></join>
   <write></write>
-</div>
+</div> -->
 
 </div>
 </template>
@@ -71,16 +74,23 @@
 
 <script>
 // console.log("show this in vue script:",this)
-// vue component import
-import contents from './components/contents.vue'
-import join from './components/join.vue'
-import write from './components/write.vue'
 
 // export to html
 export default {
   name: 'layout',
   components: {
-    contents, join, write
+    // contents, join, write
+  },
+  methods:{
+    openMenu: function(selector,classname){
+      rbl.toggleClass(selector,classname)},
+
+    closeMenu: function(selector,classname){
+      // v-on:click="closeMenu('.wrapper','menu-active')"
+      var _element = document.querySelector(selector)
+      var left=window.Number.parseFloat(window.getComputedStyle(_element).left)
+      console.log(left)
+      if(left>30){rbl.delClass(selector,classname)}}
   }
 }
 

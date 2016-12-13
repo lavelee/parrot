@@ -1,5 +1,5 @@
 <template>
-<div class="">
+<div class="content-wrapper">
   <!-- 본문 카드타일 래퍼 -->
   <main>
   <ul>

@@ -11,10 +11,9 @@
   display: flex
   justify-content: center
   align-items: center
-  // 이벤트시 display를 원래대로 바꿔서 표시
-  // display: flex
   &.hidden
     display: none
+    //hidden 이라는 클래스가 있을때만 none
   .login
     width: 250px
     height: 200px
@@ -22,3 +21,73 @@
     .login_input > input
       display: block
       margin: 0 auto
+
+
+//좌측 메뉴 바.
+//wrapper기준으로 붙여놓고
+//active 시 wrapper를 움직이면 따라오게
+$menu_width: 200px
+.app-menu
+  position: absolute
+  width: $menu_width
+  height: 100vh
+  background: tomato
+  left: -$menu_width
+  top: 0
+
+
+// 전체 페이지 (좌측 메뉴바의 이동을 전체페이지 이동으로 조절)
+// 좌측 메뉴바가 전체 페이지 안에 속한 요소이기 때문임.
+// 좌측 메뉴바 움직임이 전체 페이지를 밀어야 했기 때문. 
+.wrapper
+  background-color: gray
+  position: relative
+  left: 0
+  // 내용물에 따라 길어지게. 필요없으면 삭제
+  height: 100vh
+  transition: all 0.3s
+  &.menu-active
+    left: $menu_width
+// 이동시 스크롤바 안생기게
+body
+  overflow: hidden
+
+
+//페이지 상단 헤더
+.parrot-header
+  position: relative
+  width: 100%
+  min-width: 400px
+  height: 70px
+  // background: silver
+  //flex로 세로 가운데 배치, parrot은 가로 가운데도 배치
+  display: flex
+  justify-content: center
+  align-items: center
+  //나머지는 가로 위치만 덮어씀.
+  $icon_padding: 30px
+  .open-menu-icon
+    background: none
+    border: none
+    position: absolute
+    left: 0
+    margin:
+      left: $icon_padding
+  .login-icon
+    position: absolute
+    right: 0
+    margin:
+      right: $icon_padding
+  .write-icon
+    position: absolute
+    right: 0
+    margin:
+      right: $icon_padding
+  i
+    font-size: 30px
+    color: silver
+
+// 현재 html에는 없지만 라우터가 넣어주면 생김
+// 개별 모듈에서 덮어쓸 수 있음.
+.content-wrapper
+  width: 100%

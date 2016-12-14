@@ -27,10 +27,13 @@
 
 <!-- 메뉴 부분 -->
 <header class="parrot-header">
-  <a href="/index.html"><h1>Parrot</h1></a>
+  <a href="#/"><h1>Parrot</h1></a>
+    <a href="#/join">&nbsp;join</a>
+    <a href="#/write">&nbsp;write</a>
+    <a v-on:click.prevent="toggleClass('.login-dim','hidden')" href="#">&nbsp;login</a>
   <a href="#" class="login-icon" title="로그인"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
   <a href="#" class="write-icon" title="글쓰기"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-  <button class="open-menu-icon" title="메뉴" v-on:click="openMenu('.wrapper','menu-active')" ><i class="fa fa-bars" aria-hidden="true"></i></button>
+  <button class="open-menu-icon" title="메뉴" v-on:click="toggleClass('.wrapper','menu-active')" ><i class="fa fa-bars" aria-hidden="true"></i></button>
   <nav class="app-menu"><img src="/" alt="">
     <ul class="menu-list hidden">메뉴
       <li><a href="./join.html" class="loggedin-hidden">회원가입</a></li>
@@ -69,7 +72,7 @@
 
 <style lang='sass'>
   @import './styles/modules.sass'
-  @import './layout.sass'
+  @import './styles/layout.sass'
 </style>
 
 <script>
@@ -82,8 +85,11 @@ export default {
     // contents, join, write
   },
   methods:{
-    openMenu: function(selector,classname){
+    toggleClass: function(selector, classname){
       rbl.toggleClass(selector,classname)},
+
+    // openMenu: function(selector,classname){
+    //   rbl.toggleClass(selector,classname)},
 
     closeMenu: function(selector,classname){
       // v-on:click="closeMenu('.wrapper','menu-active')"

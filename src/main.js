@@ -24,8 +24,7 @@ const routes = [
   { path: '/', component: contents },
   { path: '/join', component: join},
   { path: '/write', component: write},
-  { path: '*', component: {template: '<div>page not found</div>'}},
-
+  { path: '*', component: {template: '<div style="text-align: center">page not found</div>'}},
 ]
 // 설정한 경로들로 새로운 라우터 생성
 const router = new VueRouter({

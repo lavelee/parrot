@@ -3,6 +3,7 @@
 // 로그인 딤창
 .login-dim
   position: absolute
+  z-index: 100
   width: 100%
   left: 0
   top: 0
@@ -38,7 +39,7 @@ $menu_width: 200px
 
 // 전체 페이지 (좌측 메뉴바의 이동을 전체페이지 이동으로 조절)
 // 좌측 메뉴바가 전체 페이지 안에 속한 요소이기 때문임.
-// 좌측 메뉴바 움직임이 전체 페이지를 밀어야 했기 때문. 
+// 좌측 메뉴바 움직임이 전체 페이지를 밀어야 했기 때문.
 .wrapper
   background-color: gray
   position: relative
@@ -50,7 +51,7 @@ $menu_width: 200px
     left: $menu_width
 // 이동시 스크롤바 안생기게
 body
-  overflow: hidden
+  overflow-x: hidden
 
 
 //페이지 상단 헤더
@@ -90,4 +91,4 @@ body
 // 현재 html에는 없지만 라우터가 넣어주면 생김
 // 개별 모듈에서 덮어쓸 수 있음.
 .content-wrapper
-  width: 100%
+  // width: 100%

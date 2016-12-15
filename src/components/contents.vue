@@ -275,6 +275,6 @@ export default {
 
 
 
-<style lang='sass' scope>
+<style lang='sass'>
   @import '../styles/contents.sass'
 </style>

@@ -1,13 +1,30 @@
 // http://fontawesome.io/icon/bars/
 
+// 메뉴바와 아래 컨텐츠의 길이.
+$page-width: 100%
+$page-max-width: 850px
+$page-min-width: 300px
+
+//메뉴 폭. 이 길이만큼 옆으로 빠져있다 이동함.
+$menu_width: 200px
+
+//메뉴바 아이콘 . 바깥에서 몇 px 안으로 넣을지 .
+//폰트어썸에 기본패딩 6px 있는데 pos.abs 쓴 우측 아이콘 두개는 사라지므로 +6 포함임
+$icon_padding: 0px
+//메뉴바 나오는 속도 (나옴자체에 모바일 이슈 있음)
+$menu-move-duration: 0.3s
+
+
+
+
 // 로그인 딤창
 .login-dim
-  position: absolute
+  position: fixed
   z-index: 100
   width: 100%
-  left: 0
+  height: 100vh
+  right: 0
   top: 0
-  height: 100%
   background-color: rgba(0, 0, 0, 0.75)
   display: flex
   justify-content: center
@@ -27,14 +44,14 @@
 //좌측 메뉴 바.
 //wrapper기준으로 붙여놓고
 //active 시 wrapper를 움직이면 따라오게
-$menu_width: 200px
 .app-menu
-  position: absolute
+  position: fixed
   width: $menu_width
   height: 100vh
   background: tomato
   left: -$menu_width
   top: 0
+  transition: all $menu-move-duration
 
 
 // 전체 페이지 (좌측 메뉴바의 이동을 전체페이지 이동으로 조절)
@@ -44,21 +61,24 @@ $menu_width: 200px
   background-color: gray
   position: relative
   left: 0
-  // 내용물에 따라 길어지게. 필요없으면 삭제
-  height: 100vh
-  transition: all 0.3s
+  transition: all $menu-move-duration
   &.menu-active
     left: $menu_width
-// 이동시 스크롤바 안생기게
+    .app-menu
+      position: fixed
+      left: 0
+// 메뉴버튼 눌러서 메뉴가 들어올시 스크롤바 안생기게
 body
   overflow-x: hidden
-
+  // 카드 페이지가 길어져도 스크롤바 안나오게
+  &::-webkit-scrollbar
+    width: 3px
+    height: 0px
 
 //페이지 상단 헤더
-$page-max-width: 850px
 .parrot-header
   position: relative
-  min-width: 400px
+  min-width: $page-min-width
   // background: silver
   //flex로 세로 가운데 배치, parrot은 가로 가운데도 배치
   .top-header
@@ -67,11 +87,10 @@ $page-max-width: 850px
     justify-content: center
     align-items: center
     position: relative
-    width: 70%
+    width: $page-width
     max-width: $page-max-width
     margin: 0 auto
     //나머지는 가로 위치만 덮어씀.
-    $icon_padding: 0px
     .open-menu-icon
       background: none
       border: none
@@ -83,17 +102,21 @@ $page-max-width: 850px
       position: absolute
       right: 0
       margin:
-        right: $icon_padding
+        right: $icon_padding +6px
     .write-icon
       position: absolute
       right: 0
       margin:
-        right: $icon_padding
+        right: $icon_padding +6px
     i
       font-size: 30px
       color: silver
 
+// 카드 들어오는 전체 틀
 // 현재 html에는 없지만 라우터가 넣어주면 생김
-// 개별 모듈에서 덮어쓸 수 있음.
 .content-wrapper
-  // width: 100%
+  width: $page-width
+  max-width: $page-max-width
+  min-width: $page-min-width
+  margin: 0 auto
+  min-height: 50vh

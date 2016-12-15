@@ -1,56 +1,87 @@
-$page-max-width: 850px
-//카드 들어오는 전체 틀
+// 카드 세로 간격 (패딩처리)
+$vertical-box-spacing: 20px
+$horizontal-box-spacing: 20px
+
+// 컬럼 최소길이. 이보다 낮게 줄어들면 컬럼하나가 사라지고,
+// 이 값의 새 컬럼이 들어갈만하게 늘어나면 컬럼이 추가된다.
+$minimum-col-width: 200px
+
+//10개씩 가져오는 ul 요소 각각
 .card-frame
   background: blue
-  width: 70%
-  max-width: $page-max-width
-  margin: 0 auto
-  padding-bottom: 20px
-  column-width: 200px
-  column-gap: 20px
+  column-width: $minimum-col-width
+  column-gap: $horizontal-box-spacing
+  width: 100%
 
-// ul
-//   position: relative
-//   top: 20px
-  // break-inside: avoid
+//ul요소 끝난 후 마지막 splitter
+.page-splitter
+  width: 100%
+  border-bottom: 1px solid blue
+  margin-bottom: $vertical-box-spacing + 5px
+  text-align: center
+
 //개별 카드
 .card-single
-  background: aqua
-  border-radius: 10px
-  overflow: hidden
   position: relative
   width: 100%
-  // height: 500px
-  padding-bottom: 20px
+  padding-bottom: $vertical-box-spacing
   box-sizing: border-box
   break-inside: avoid
   a
+    background: aqua
     display: block
     width: 100%
     height: 100%
-    p
-      // display: inline-block
-    // background-image: url('http://placehold.it/328x490')
+    min-height: 100px
+    border-radius: 15px
+    overflow: hidden
   img
+    display: block
     width: 100%
     height: auto
 
-//글자 뜨는부분
+//글자 뜨는영억 (abs)부분
 .card-texts
   text-align: center
-  // margin: 0 auto
   position: absolute
   top: 0
-  // right: 0
+  width: 100%
+  height: 100%
+  .card-short-content
+    position: absolute
+    //간격을 padding 으로 줘서 %에 계산되기때문에 빼줌
+    top: calc(50% - #{$vertical-box-spacing/2+5px})
+    left: 50%
+    width: 80%
+    max-height: 40%
+    overflow: hidden
+    transform: translateX(-50%) translateY(-50%)
+    display: none
+  .card-hashtags
+    position: absolute
+    left: 50%
+    top: calc(50% - #{$vertical-box-spacing/2+5px})
+    width: 80%
+    max-height: 40%
+    overflow: hidden
+    transform: translateX(-50%) translateY(-50%)
+  .card-replies
+    position: absolute
+    bottom: $vertical-box-spacing+2px
+    right: 10px
+  .card-stars
+    position: absolute
+    bottom: $vertical-box-spacing+2px
+    left: 50%
+    transform: translateX(-50%)
+  .card-distance
+    position: absolute
+    bottom: $vertical-box-spacing+2px
+    left: 10px
 
-// .card-hashtags, .card-short-content
-//   position: absolute
-//   left: 50%
-//   &.hidden
-//     color: rgba(255, 0, 0, 0)
 
 
-// 아이콘
+// 카드 내 아이콘
 .hashtag-single
   &::before
     content: '\f292'

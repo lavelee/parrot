@@ -7,8 +7,10 @@
     <li class="card-single"><a href="">
       <img src="http://placehold.it/728x490" alt="background">
       <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">1-1</p>
+      <p class="card-hashtags">
+        <span class="hashtag-single">333</span>
+      </p>
+      <p class="card-short-content">1-1 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       <p class="card-date">2016-12-12</p>
       <p class="card-distance">12km</p>
       <p class="card-stars">5</p>
@@ -115,6 +117,12 @@
     </div>
       </a></li>
   </ul>
+
+<div class="page-splitter">
+  <span>10</span>
+</div>
+
+
   <ul class="card-frame">
     <!-- v-for 로 여러개 생성할 부분 -->
     <li class="card-single"><a href="">

@@ -57,36 +57,39 @@ body
 //페이지 상단 헤더
 .parrot-header
   position: relative
-  width: 100%
   min-width: 400px
-  height: 70px
   // background: silver
   //flex로 세로 가운데 배치, parrot은 가로 가운데도 배치
-  display: flex
-  justify-content: center
-  align-items: center
-  //나머지는 가로 위치만 덮어씀.
-  $icon_padding: 30px
-  .open-menu-icon
-    background: none
-    border: none
-    position: absolute
-    left: 0
-    margin:
-      left: $icon_padding
-  .login-icon
-    position: absolute
-    right: 0
-    margin:
-      right: $icon_padding
-  .write-icon
-    position: absolute
-    right: 0
-    margin:
-      right: $icon_padding
-  i
-    font-size: 30px
-    color: silver
+  .top-header
+    height: 70px
+    display: flex
+    justify-content: center
+    align-items: center
+    position: relative
+    width: 70%
+    margin: 0 auto
+    //나머지는 가로 위치만 덮어씀.
+    $icon_padding: 0px
+    .open-menu-icon
+      background: none
+      border: none
+      position: absolute
+      left: 0
+      margin:
+        left: $icon_padding
+    .login-icon
+      position: absolute
+      right: 0
+      margin:
+        right: $icon_padding
+    .write-icon
+      position: absolute
+      right: 0
+      margin:
+        right: $icon_padding
+    i
+      font-size: 30px
+      color: silver
 
 // 현재 html에는 없지만 라우터가 넣어주면 생김
 // 개별 모듈에서 덮어쓸 수 있음.

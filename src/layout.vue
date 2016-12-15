@@ -27,6 +27,7 @@
 
 <!-- 메뉴 부분 -->
 <header class="parrot-header">
+  <div class="top-header">
   <a href="#/"><h1>Parrot</h1></a>
     <a href="#/join">&nbsp;join</a>
     <a href="#/write">&nbsp;write</a>
@@ -34,6 +35,7 @@
   <a href="#" class="login-icon" title="로그인"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
   <a href="#" class="write-icon" title="글쓰기"><i class="fa fa-pencil" aria-hidden="true"></i></a>
   <button class="open-menu-icon" title="메뉴" v-on:click="toggleClass('.wrapper','menu-active')" ><i class="fa fa-bars" aria-hidden="true"></i></button>
+</div>
   <nav class="app-menu"><img src="/" alt="">
     <ul class="menu-list hidden">메뉴
       <li><a href="./join.html" class="loggedin-hidden">회원가입</a></li>

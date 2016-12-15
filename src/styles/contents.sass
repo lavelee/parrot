@@ -1,33 +1,51 @@
+//카드 들어오는 전체 틀
 .card-frame
   background: blue
-  width: 960px
+  width: 70%
   margin: 0 auto
-  // display: flex
-  // flex-wrap: wrap
+  padding-bottom: 20px
+  column-width: 200px
+  column-gap: 20px
 
+// ul
+//   position: relative
+//   top: 20px
+  // break-inside: avoid
+//개별 카드
 .card-single
   background: aqua
   border-radius: 10px
   overflow: hidden
   position: relative
-  width: 30%
+  width: 100%
   // height: 500px
-  margin: 10px
-  text-align: center
-  // flex-basis: 400px
+  padding-bottom: 20px
+  box-sizing: border-box
+  break-inside: avoid
   a
-    // height: 500px
+    display: block
+    width: 100%
+    height: 100%
+    p
+      // display: inline-block
+    // background-image: url('http://placehold.it/328x490')
   img
     width: 100%
     height: auto
-    // max-height: 300Wpx
-    // position: absolute
-    // z-index: -1
-.card-hashtags, .card-short-content
+
+//글자 뜨는부분
+.card-texts
+  text-align: center
+  // margin: 0 auto
   position: absolute
-  left: 50%
-  &.hidden
-    color: rgba(255, 0, 0, 0)
+  top: 0
+  // right: 0
+
+// .card-hashtags, .card-short-content
+//   position: absolute
+//   left: 50%
+//   &.hidden
+//     color: rgba(255, 0, 0, 0)
 
 
 // 아이콘

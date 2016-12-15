@@ -128,14 +128,12 @@
     <li class="card-single"><a href="">
       <img src="http://placehold.it/728x490" alt="background">
       <div class="card-texts">
-      <div class="card-texts">
       <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
       <p class="card-short-content">2-1</p>
       <p class="card-date">2016-12-12</p>
       <p class="card-distance">12km</p>
       <p class="card-stars">5</p>
-
-    </div>  <p class="card-replies">11</p>
+      <p class="card-replies">11</p>
     </div>
     </a></li>
   <li class="card-single"><a href="">

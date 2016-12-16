@@ -1,8 +1,10 @@
 import Vue from 'vue' // 뷰 코어
 import Axios from 'axios' //AJAX 통신모듈
+import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router' //라우팅모듈
 import layout from './layout.vue' //메인 페이지 프레임
 import rbl from './components/jsmodules.js' // 글로벌 유틸모듈 로드
+import parrot from './config.js'
 
 
 //로드 확인
@@ -30,6 +32,17 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+//axios 라이브러리를 vue에 등록
+Vue.use(VueAxios, Axios)
+//axios test
+console.log("initiating axios")
+var api = parrot.server_dir+'/post/'
+Vue.axios.get(api).then((response) => {
+  console.log(response.data)
+})
+
+
 
 
 // vue 시작

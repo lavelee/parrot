@@ -4,238 +4,50 @@
   <main>
   <ul class="card-frame">
     <!-- v-for 로 여러개 생성할 부분 -->
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/728x490" alt="background">
+    <li v-for="contents in contents_list.results" class="card-single"><a href="">
+      <img v-bind:src=contents.img_thumbnail alt="background">
       <div class="card-texts">
       <p class="card-hashtags">
         <span class="hashtag-single">333</span>
       </p>
-      <p class="card-short-content">1-1 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
+      <p class="card-short-content">{{contents.content}}</p>
+      <p class="card-date">{{contents.created_date}}</p>
+      <p class="card-distance">{{contents.distance}}</p>
+      <p class="card-stars">{{contents.like_users_counts}}</p>
+      <p class="card-replies">{{contents.comments_counts}}</p>
     </div>
     </a></li>
-  <li class="card-single"><a href="">
-      <img src="http://placehold.it/300x590" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">1-2</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/680x420" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">1-3</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/420x680" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">1-4</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/1024x763" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">1-5</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/728x190" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">1-6</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/300x590" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags "><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content ">1-7</p>
-      <p class="card-date ">2016-12-12</p>
-      <p class="card-distance ">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-      </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/680x420" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">1-8</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/420x680" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">1-9</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-     <li class="card-single"><a href="">
-      <img src="http://placehold.it/1024x763" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">1-10</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
+
   </ul>
 
 <div class="page-splitter">
   <span>10</span>
 </div>
 
+<!-- <ul class="card-frame">
+<li class="card-single"><a href="">
+  <img src="http://placehold.it/728x490" alt="background">
+  <div class="card-texts">
+  <p class="card-hashtags">
+    <span class="hashtag-single">333</span>
+  </p>
+  <p class="card-short-content">1-1 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p class="card-date">2016-12-12</p>
+  <p class="card-distance">12km</p>
+  <p class="card-stars">5</p>
+  <p class="card-replies">11</p>
+</div>
+</a></li>
+</ul>
+<div class="page-splitter">
+<span>10</span>
+</div> -->
 
-  <ul class="card-frame">
-    <!-- v-for 로 여러개 생성할 부분 -->
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/728x490" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">2-1</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-    </a></li>
-  <li class="card-single"><a href="">
-      <img src="http://placehold.it/300x590" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">2-2</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/680x420" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">2-3</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/420x680" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">2-4</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/1024x763" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">2-5</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/728x190" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">2-6</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/300x590" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags hidden"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content hidden">2-7</p>
-      <p class="card-date hidden">2016-12-12</p>
-      <p class="card-distance hidden">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies hidden">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/680x420" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">2-8</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-    <li class="card-single"><a href="">
-      <img src="http://placehold.it/420x680" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">2-9</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-     <li class="card-single"><a href="">
-      <img src="http://placehold.it/1024x763" alt="background">
-      <div class="card-texts">
-      <p class="card-hashtags"><span class="hashtag-single">333</span><span class="hashtag-single">444</span></p>
-      <p class="card-short-content">2-10</p>
-      <p class="card-date">2016-12-12</p>
-      <p class="card-distance">12km</p>
-      <p class="card-stars">5</p>
-      <p class="card-replies">11</p>
-    </div>
-      </a></li>
-  </ul>
+
+
+
+
+
   </main>
 
   <!-- 상세보기시 뜨는 창 구성 -->
@@ -273,9 +85,25 @@
 
 
 <script>
+import parrot from '../config.js'
 export default {
-  name: 'contents',
-  components: { }
+  name: 'Contents',
+  data: function(){
+    return {
+      contents_list: ""
+    }
+  },
+  components: { },
+  created: function(){
+    // console.log("i'm created! ya!")
+    var api = parrot.server_dir+'/post/'
+    this.axios.get(api).then((response) => {
+      // console.log("i'm created and did this!",response.data)
+      // console.log("this in axios:",this)
+      this.contents_list = response.data
+      console.log(this.contents_list)
+    })
+  }
 }
 
 

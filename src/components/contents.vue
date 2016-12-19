@@ -5,7 +5,7 @@
   <main>
   <ul class="card-frame">
     <!-- v-for 로 여러개 생성할 부분 -->
-    <li v-for="contents in contents_list" class="card-single"><a v-on:click.prevent="test" href="">
+    <li v-for="contents in contents_list" class="card-single"><a href="">
       <img v-bind:src=contents.img_thumbnail alt="background">
       <div class="card-texts">
       <p class="card-hashtags">
@@ -98,11 +98,9 @@ export default {
   },
   components: { },
   methods: {
-    test(){
-      this.$emit("test")
-    }
   },
   created: function(){
+    window.eventbus.$on('scroll',function(){console.log("event from bus")})
     var api = parrot.server_dir+'/post/'
     this.axios.get(api).then((response) => {
       // console.log(response)

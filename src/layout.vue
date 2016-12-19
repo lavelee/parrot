@@ -58,7 +58,9 @@
 </header>
 
 <!-- 메인 컨텐츠 부분 -->
-<router-view v-on:test="test_parent"></router-view>
+<keep-alive>
+<router-view></router-view>
+</keep-alive>
 <!-- <div class="main-contents">
   <contents></contents>
   <join></join>
@@ -103,7 +105,7 @@ export default {
   },
 
   mounted: function(){
-    this.$on('test', function(){console.log("triggered from parent")})
+
     //매번 엘리먼트를 찾아오지 않기위해 mounted에 분리해둔 엘리먼트 찾기
     console.log("mounted! finding element..")
     this.el_scroll_window = document.querySelector(".scroll-window")
@@ -111,10 +113,6 @@ export default {
   },
 
   methods:{
-    test_parent(){
-      console.log("triggered from parent")
-    },
-
     toggleClass(selector, classname){
       rbl.toggleClass(selector,classname)},
 
@@ -134,6 +132,7 @@ export default {
       console.log("wrapper max scroll = ", scroll_end)
       console.log("present scroll position = ",scroll_present_pos)
       console.log("scroll_left = ",scroll_left)
+      window.eventbus.$emit('scroll')
 
       if(scroll_left < scroll_left_threshold && can_retrive){
         can_retrive = false

@@ -42,7 +42,7 @@ Vue.use(VueAxios, Axios)
 // })
 
 
-
+window.eventbus=new Vue()
 
 // vue 시작
 new Vue({

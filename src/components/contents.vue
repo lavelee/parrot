@@ -5,7 +5,7 @@
   <main>
   <ul class="card-frame">
     <!-- v-for 로 여러개 생성할 부분 -->
-    <li v-for="contents in contents_list" class="card-single"><a href="">
+    <li v-for="contents in contents_list" class="card-single"><a v-on:click.prevent="test" href="">
       <img v-bind:src=contents.img_thumbnail alt="background">
       <div class="card-texts">
       <p class="card-hashtags">
@@ -86,6 +86,7 @@
 
 
 <script>
+
 import parrot from '../config.js'
 export default {
   name: 'Contents',
@@ -96,7 +97,11 @@ export default {
     }
   },
   components: { },
-  methods: {},
+  methods: {
+    test(){
+      this.$emit("test")
+    }
+  },
   created: function(){
     var api = parrot.server_dir+'/post/'
     this.axios.get(api).then((response) => {

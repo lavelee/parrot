@@ -58,7 +58,7 @@
 </header>
 
 <!-- 메인 컨텐츠 부분 -->
-<router-view></router-view>
+<router-view v-on:test="test_parent"></router-view>
 <!-- <div class="main-contents">
   <contents></contents>
   <join></join>
@@ -82,7 +82,7 @@
 <script>
 // console.log("show this in vue script:",this)
 import rbl from './components/jsmodules.js' // 글로벌 유틸모듈 로드
-
+var can_retrive = true
 
 // export to html
 export default {
@@ -96,39 +96,25 @@ export default {
     return {
       scroll_position: 0.0,
       el_scroll_window: "",
-      el_wrapper: ""
+      el_wrapper: "",
+      scroll_now: 0,
+      scroll_end: 0,
     }
   },
 
   mounted: function(){
+    this.$on('test', function(){console.log("triggered from parent")})
+    //매번 엘리먼트를 찾아오지 않기위해 mounted에 분리해둔 엘리먼트 찾기
     console.log("mounted! finding element..")
-    var el_scroll_window = document.querySelector(".scroll-window")
-    var el_wrapper = document.querySelector(".wrapper")
-    console.log("el_scroll_window : ",el_scroll_window)
-    console.log("el_wrapper : ", el_wrapper)
-    console.log(this)
-    this.el_scroll_window = el_scroll_window
-    this.el_wrapper = el_wrapper
+    this.el_scroll_window = document.querySelector(".scroll-window")
+    this.el_wrapper = document.querySelector(".wrapper")
   },
 
-  // beforeupdated: function(){
-  //   console.log("waiting for all documnet loaded")
-  //   window.onload = function(){
-  //   var _body = document.querySelector("body")
-  //   var _wrapper = document.querySelector(".wrapper")
-  //   console.log("load finished! onscroll attatched")
-  //   document.querySelector("body").onscroll = function(){
-  //     // console.log("body:",_body)
-  //     // console.log("wrapper: ",_wrapper)
-  //     // console.log("wrapper scroll: ",_body.scrollTop)
-  //     // console.log("getComputedStyle height: ",parseInt(window.getComputedStyle(_wrapper).height))
-  //     // console.log("window.innerHeight: ",window.innerHeight)
-  //     console.log("wrapper max scroll = ", parseInt(window.getComputedStyle(_wrapper).height) -window.innerHeight)
-  //   }}
-  //   console.log("mounted function finished")
-  // },
-
   methods:{
+    test_parent(){
+      console.log("triggered from parent")
+    },
+
     toggleClass(selector, classname){
       rbl.toggleClass(selector,classname)},
 
@@ -140,12 +126,20 @@ export default {
       if(left>30){rbl.delClass(selector,classname)}},
 
     scrollFunction(el_scroll_window,el_wrapper){
-      console.log("scroll-window:",el_scroll_window)
-      console.log("wrapper: ",el_wrapper)
-      console.log("wrapper scroll: ",el_scroll_window.scrollTop)
-      console.log("getComputedStyle height: ",parseInt(window.getComputedStyle(el_wrapper).height))
-      console.log("window.innerHeight: ",window.innerHeight)
-      console.log("wrapper max scroll = ", parseInt(window.getComputedStyle(el_wrapper).height) -window.innerHeight)
+      //최대 스크롤은 전체길이에서 화면세로뷰만큼 뺀 값이다.
+      var scroll_end = parseInt(window.getComputedStyle(el_wrapper).height) -window.innerHeight
+      var scroll_present_pos = parseInt(el_scroll_window.scrollTop)
+      var scroll_left = scroll_end - scroll_present_pos
+      var scroll_left_threshold = 100
+      console.log("wrapper max scroll = ", scroll_end)
+      console.log("present scroll position = ",scroll_present_pos)
+      console.log("scroll_left = ",scroll_left)
+
+      if(scroll_left < scroll_left_threshold && can_retrive){
+        can_retrive = false
+        console.log("retrive more data")
+      }
+
     }
   }
 

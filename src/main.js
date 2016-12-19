@@ -3,16 +3,16 @@ import Axios from 'axios' //AJAX 통신모듈
 import VueAxios from 'vue-axios'
 import VueRouter from 'vue-router' //라우팅모듈
 import layout from './layout.vue' //메인 페이지 프레임
-import rbl from './components/jsmodules.js' // 글로벌 유틸모듈 로드
+
 
 //로드 확인
-console.log("Vue :",Vue)
-console.log("Axios :",Axios)
-console.log("VueRouter :",VueRouter)
-console.log("layout :",layout)
-window.rbl=rbl // 디버그용
-console.log("rbl.toggle : ",rbl.toggleClass)
-console.log("this : ",this)
+// console.log("Vue :",Vue)
+// console.log("Axios :",Axios)
+// console.log("VueRouter :",VueRouter)
+// console.log("layout :",layout)
+// window.rbl=rbl // 디버그용
+// console.log("rbl.toggle : ",rbl.toggleClass)
+// console.log("this : ",this)
 
 
 //routing 라이브러리를 vue 에 등록

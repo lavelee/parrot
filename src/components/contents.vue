@@ -1,17 +1,18 @@
 <template>
 <div class="content-wrapper">
   <!-- 본문 카드타일 래퍼 -->
+  <!-- <main v-on:scroll="scrollFunction"> -->
   <main>
   <ul class="card-frame">
     <!-- v-for 로 여러개 생성할 부분 -->
-    <li v-for="contents in contents_list.results" class="card-single"><a href="">
+    <li v-for="contents in contents_list" class="card-single"><a href="">
       <img v-bind:src=contents.img_thumbnail alt="background">
       <div class="card-texts">
       <p class="card-hashtags">
         <span class="hashtag-single">333</span>
       </p>
       <p class="card-short-content">{{contents.content}}</p>
-      <p class="card-date">{{contents.created_date}}</p>
+      <p class="card-date">{{contents.created_date.slice(0,16).replace("T"," ")}}</p>
       <p class="card-distance">{{contents.distance}}</p>
       <p class="card-stars">{{contents.like_users_counts}}</p>
       <p class="card-replies">{{contents.comments_counts}}</p>
@@ -90,18 +91,20 @@ export default {
   name: 'Contents',
   data: function(){
     return {
-      contents_list: ""
+      contents_list: [],
+      next_contents_link: ""
     }
   },
   components: { },
+  methods: {},
   created: function(){
-    // console.log("i'm created! ya!")
     var api = parrot.server_dir+'/post/'
     this.axios.get(api).then((response) => {
-      // console.log("i'm created and did this!",response.data)
-      // console.log("this in axios:",this)
-      this.contents_list = response.data
-      console.log(this.contents_list)
+      // console.log(response)
+      console.log("api responded")
+      this.next_contents_link = response.data.next
+      this.contents_list = this.contents_list.concat(response.data.results)
+
     })
   }
 }

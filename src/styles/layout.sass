@@ -67,13 +67,20 @@ $menu-move-duration: 0.3s
     .app-menu
       position: fixed
       left: 0
-// 메뉴버튼 눌러서 메뉴가 들어올시 스크롤바 안생기게
-body
+  // 메뉴버튼 눌러서 메뉴가 들어올시 스크롤바 안생기게
   overflow-x: hidden
-  // 카드 페이지가 길어져도 스크롤바 안나오게
+
+.scroll-window
+  height: 100vh
+  overflow-y: scroll
+  overflow-x: hidden
   &::-webkit-scrollbar
     width: 3px
     height: 0px
+
+  // 카드 페이지가 길어져도 스크롤바 안나오게
+body
+  // overflow-y: scroll
 
 //페이지 상단 헤더
 .parrot-header

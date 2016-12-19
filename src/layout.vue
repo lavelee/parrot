@@ -1,5 +1,6 @@
 <template>
 <!-- <div class="wrapper menu-active"> -->
+<div v-on:scroll="scrollFunction(el_scroll_window,el_wrapper)" class="scroll-window">
 <div class="wrapper">
 <h1 class="readable-hidden">Parrot</h1>
 
@@ -65,6 +66,7 @@
 </div> -->
 
 </div>
+</div>
 </template>
 
 <style lang='scss'>
@@ -79,27 +81,74 @@
 
 <script>
 // console.log("show this in vue script:",this)
+import rbl from './components/jsmodules.js' // 글로벌 유틸모듈 로드
+
 
 // export to html
 export default {
   name: 'layout',
+
   components: {
     // contents, join, write
   },
+
+  data: function(){
+    return {
+      scroll_position: 0.0,
+      el_scroll_window: "",
+      el_wrapper: ""
+    }
+  },
+
+  mounted: function(){
+    console.log("mounted! finding element..")
+    var el_scroll_window = document.querySelector(".scroll-window")
+    var el_wrapper = document.querySelector(".wrapper")
+    console.log("el_scroll_window : ",el_scroll_window)
+    console.log("el_wrapper : ", el_wrapper)
+    console.log(this)
+    this.el_scroll_window = el_scroll_window
+    this.el_wrapper = el_wrapper
+  },
+
+  // beforeupdated: function(){
+  //   console.log("waiting for all documnet loaded")
+  //   window.onload = function(){
+  //   var _body = document.querySelector("body")
+  //   var _wrapper = document.querySelector(".wrapper")
+  //   console.log("load finished! onscroll attatched")
+  //   document.querySelector("body").onscroll = function(){
+  //     // console.log("body:",_body)
+  //     // console.log("wrapper: ",_wrapper)
+  //     // console.log("wrapper scroll: ",_body.scrollTop)
+  //     // console.log("getComputedStyle height: ",parseInt(window.getComputedStyle(_wrapper).height))
+  //     // console.log("window.innerHeight: ",window.innerHeight)
+  //     console.log("wrapper max scroll = ", parseInt(window.getComputedStyle(_wrapper).height) -window.innerHeight)
+  //   }}
+  //   console.log("mounted function finished")
+  // },
+
   methods:{
-    toggleClass: function(selector, classname){
+    toggleClass(selector, classname){
       rbl.toggleClass(selector,classname)},
 
-    // openMenu: function(selector,classname){
-    //   rbl.toggleClass(selector,classname)},
-
-    closeMenu: function(selector,classname){
-      // v-on:click="closeMenu('.wrapper','menu-active')"
+    closeMenu(selector,classname){
       var _element = document.querySelector(selector)
+      // menu will only be closed when it's opened.
       var left=window.Number.parseFloat(window.getComputedStyle(_element).left)
       console.log(left)
-      if(left>30){rbl.delClass(selector,classname)}}
+      if(left>30){rbl.delClass(selector,classname)}},
+
+    scrollFunction(el_scroll_window,el_wrapper){
+      console.log("scroll-window:",el_scroll_window)
+      console.log("wrapper: ",el_wrapper)
+      console.log("wrapper scroll: ",el_scroll_window.scrollTop)
+      console.log("getComputedStyle height: ",parseInt(window.getComputedStyle(el_wrapper).height))
+      console.log("window.innerHeight: ",window.innerHeight)
+      console.log("wrapper max scroll = ", parseInt(window.getComputedStyle(el_wrapper).height) -window.innerHeight)
+    }
   }
+
 }
 
 

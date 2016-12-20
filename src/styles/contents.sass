@@ -70,7 +70,14 @@ $card-transition-duration: 0.3s
     width: $content-width
     max-height: $content-max-height
     overflow: hidden
+    -webkit-transform: translateZ(0)
     transform: translateX(-50%) translateY(-50%)
+  .card-stars
+    position: absolute
+    bottom: $icon-bottom-padding
+    left: 50%
+    -webkit-transform: translateZ(0)
+    transform: translateX(-50%)
   .card-hashtags
     position: absolute
     left: 50%
@@ -79,15 +86,12 @@ $card-transition-duration: 0.3s
     max-height: $content-max-height
     overflow: hidden
     transform: translateX(-50%) translateY(-50%)
+  .card-hashtags,.card-stars,.card-short-content
+    -webkit-backface-visibility: hidden
   .card-replies
     position: absolute
     bottom: $icon-bottom-padding
     right: $icon-padding
-  .card-stars
-    position: absolute
-    bottom: $icon-bottom-padding
-    left: 50%
-    transform: translateX(-50%)
   .card-distance
     position: absolute
     bottom: $icon-bottom-padding
@@ -126,3 +130,10 @@ $card-transition-duration: 0.3s
 .card-replies::before
   content: '\f27a'
   font-family: FontAwesome
+
+// transition
+.cardlist-enter-active, .cardlist-leave-active
+  transition: all 1s
+.cardlist-enter, .cardlist-leave-active
+  opacity: 0
+  transform: translateY(30px)

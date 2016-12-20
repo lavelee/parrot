@@ -3,9 +3,10 @@
   <!-- 본문 카드타일 래퍼 -->
   <!-- <main v-on:scroll="scrollFunction"> -->
   <main>
+  <div v-for="page in contents_list" class="page">
   <ul class="card-frame">
     <!-- v-for 로 여러개 생성할 부분 -->
-    <li v-for="contents in contents_list" class="card-single"><a href="">
+    <li v-for="contents in page" class="card-single"><a href="">
       <img v-bind:src=contents.img_thumbnail alt="background">
       <div class="card-texts">
       <p class="card-hashtags">
@@ -23,6 +24,7 @@
 
 <div class="page-splitter">
   <span>10</span>
+</div>
 </div>
 
 <!-- <ul class="card-frame">
@@ -97,19 +99,23 @@ export default {
       api_post: ""
     }
   },
-  components: { },
+  components: {   },
   methods: {
     addPostData(address,initial=false){
+      console.log("api address:",address)
       // console.log("this: ",this)
       // console.log(this.api_post)
-      this.axios.get(this.api_post).then((response) => {
-        // console.log(response)
+      console.log("initial: ",initial)
+      this.axios.get(address).then((response) => {
+        console.log("response.data.next",response.data.next)
         console.log("api responded")
         this.next_postpage_link = response.data.next
-        this.contents_list = this.contents_list.concat(response.data.results)
+        console.log("this.next_postpage_link updated :",this.next_postpage_link)
+        this.contents_list = this.contents_list.concat([response.data.results])
         console.log("parent can_retrive before responding",this.$parent.can_retrive)
         if(!initial){
-          this.$parent.can_retrive=true
+          // this.$parent.can_retrive=true
+          window.eventbus.$emit('addpost_api_callfinished')
           console.log("parent can_retrive modification",this.$parent.can_retrive)
         }
       })
@@ -121,7 +127,7 @@ export default {
     this.addPostData(this.api_post,true)
     window.eventbus.$on('scroll',function(){
       // console.log("this:",this)
-      self.addPostData(this.next_postpage_link)
+      self.addPostData(self.next_postpage_link)
     })
   }
 }

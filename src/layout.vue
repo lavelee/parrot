@@ -109,6 +109,11 @@ export default {
     console.log("mounted! finding element..")
     this.el_scroll_window = document.querySelector(".scroll-window")
     this.el_wrapper = document.querySelector(".wrapper")
+    var self = this
+    window.eventbus.$on('addpost_api_callfinished',function(){
+      // console.log("this:",this)
+      self.can_retrive= true
+    })
   },
 
   methods:{

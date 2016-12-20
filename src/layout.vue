@@ -84,7 +84,6 @@
 <script>
 // console.log("show this in vue script:",this)
 import rbl from './components/jsmodules.js' // 글로벌 유틸모듈 로드
-var can_retrive = true
 
 // export to html
 export default {
@@ -101,11 +100,11 @@ export default {
       el_wrapper: "",
       scroll_now: 0,
       scroll_end: 0,
+      can_retrive: true
     }
   },
 
   mounted: function(){
-
     //매번 엘리먼트를 찾아오지 않기위해 mounted에 분리해둔 엘리먼트 찾기
     console.log("mounted! finding element..")
     this.el_scroll_window = document.querySelector(".scroll-window")
@@ -129,14 +128,13 @@ export default {
       var scroll_present_pos = parseInt(el_scroll_window.scrollTop)
       var scroll_left = scroll_end - scroll_present_pos
       var scroll_left_threshold = 100
-      console.log("wrapper max scroll = ", scroll_end)
-      console.log("present scroll position = ",scroll_present_pos)
-      console.log("scroll_left = ",scroll_left)
-      window.eventbus.$emit('scroll')
-
-      if(scroll_left < scroll_left_threshold && can_retrive){
-        can_retrive = false
+      // console.log("wrapper max scroll = ", scroll_end)
+      // console.log("present scroll position = ",scroll_present_pos)
+      // console.log("scroll_left = ",scroll_left)
+      if(scroll_left < scroll_left_threshold && this.can_retrive){
+        this.can_retrive = false
         console.log("retrive more data")
+        window.eventbus.$emit('scroll')
       }
 
     }

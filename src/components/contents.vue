@@ -93,21 +93,35 @@ export default {
   data: function(){
     return {
       contents_list: [],
-      next_contents_link: ""
+      next_postpage_link: "",
+      api_post: ""
     }
   },
   components: { },
   methods: {
+    addPostData(address,initial=false){
+      // console.log("this: ",this)
+      // console.log(this.api_post)
+      this.axios.get(this.api_post).then((response) => {
+        // console.log(response)
+        console.log("api responded")
+        this.next_postpage_link = response.data.next
+        this.contents_list = this.contents_list.concat(response.data.results)
+        console.log("parent can_retrive before responding",this.$parent.can_retrive)
+        if(!initial){
+          this.$parent.can_retrive=true
+          console.log("parent can_retrive modification",this.$parent.can_retrive)
+        }
+      })
+    }
   },
   created: function(){
-    window.eventbus.$on('scroll',function(){console.log("event from bus")})
-    var api = parrot.server_dir+'/post/'
-    this.axios.get(api).then((response) => {
-      // console.log(response)
-      console.log("api responded")
-      this.next_contents_link = response.data.next
-      this.contents_list = this.contents_list.concat(response.data.results)
-
+    var self = this
+    this.api_post = parrot.server_dir+'/post/'
+    this.addPostData(this.api_post,true)
+    window.eventbus.$on('scroll',function(){
+      // console.log("this:",this)
+      self.addPostData(this.next_postpage_link)
     })
   }
 }

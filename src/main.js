@@ -1,6 +1,6 @@
 import Vue from 'vue' // 뷰 코어
 import Axios from 'axios' //AJAX 통신모듈
-import VueAxios from 'vue-axios'
+import VueAxios from 'vue-axios' //vue wrapper for axios
 import VueRouter from 'vue-router' //라우팅모듈
 import layout from './layout.vue' //메인 페이지 프레임
 

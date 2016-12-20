@@ -6,20 +6,21 @@
     <div v-for="page,index in contents_list"class="page">
       <!-- v-for 로 여러개 생성할 부분 -->
     <ul class="card-frame">
-      <li v-for="contents in page" class="card-single"><a href="">
-        <img v-bind:src=contents.img_thumbnail alt="background">
-        <div class="card-texts">
-          <p class="card-hashtags">
-            <span class="hashtag-single" v-for="hashtags in contents.hashtags">{{hashtags}}</span>
-          </p>
-          <p class="card-short-content">{{contents.content}}</p>
-          <p class="card-date">{{contents.created_date.slice(0,16).replace("T"," ")}}</p>
-          <p class="card-distance">{{contents.distance}}</p>
-          <p class="card-stars">{{contents.like_users_counts}}</p>
-          <p class="card-replies">{{contents.comments_counts}}</p>
+    <li v-for="contents in page" class="card-single">
+    <router-link :to="{path: '/', query: {post_id: contents.id}}">
+      <img v-bind:src=contents.img_thumbnail alt="background">
+      <div class="card-texts">
+        <p class="card-hashtags">
+          <span class="hashtag-single" v-for="hashtags in contents.hashtags">{{hashtags}}</span>
+        </p>
+        <p class="card-short-content">{{contents.content}}</p>
+        <p class="card-date">{{contents.created_date.slice(0,16).replace("T"," ")}}</p>
+        <p class="card-distance">{{contents.distance}}</p>
+        <p class="card-stars">{{contents.like_users_counts}}</p>
+        <p class="card-replies">{{contents.comments_counts}}</p>
       </div>
-    </a></li>
-  </ul>
+    </router-link>
+    </li></ul>
       <div class="page-splitter">
         <span>{{(index)*n_post_initial_page+page.length}}</span>
         <span v-if="last_post_notice&&(index===(contents_list.length-1))">end of post</span>
@@ -27,6 +28,9 @@
     </div>
     <!-- </transition-group> -->
   </main>
+
+
+
 
   <!-- 상세보기시 뜨는 창 구성 -->
   <section class="detail-view">
@@ -77,6 +81,7 @@ export default {
   methods: {
     addPostData(address,initial=false){
       this.axios.get(address).then((response) => {
+        console.log("api responded")
         this.next_postpage_link = response.data.next
         if(!this.next_postpage_link){
           this.last_post_notice=true
@@ -107,9 +112,10 @@ export default {
     }
   },
   created: function(){
-    var self = this
     this.api_post = parrot.server_dir+'/post/'
     this.addPostData(this.api_post,true)
+    //event emitted from layout.vue scroll trigger
+    var self = this
     window.eventbus.$on('scroll',function(){
       self.addPostData(self.next_postpage_link)
     })

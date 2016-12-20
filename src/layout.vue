@@ -30,8 +30,8 @@
 <header class="parrot-header">
   <div class="top-header">
   <a href="#/"><h1>Parrot</h1></a>
-    <a href="#/join">&nbsp;join</a>
-    <a href="#/write">&nbsp;write</a>
+    <a href="#/join/">&nbsp;join</a>
+    <a href="#/write/">&nbsp;write</a>
     <a v-on:click.prevent="toggleClass('.login-dim','hidden')" href="#">&nbsp;login</a>
   <a href="#" class="login-icon" title="로그인"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
   <a href="#" class="write-icon" title="글쓰기"><i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -105,8 +105,9 @@ export default {
   },
 
   mounted: function(){
+    console.log("this.$route.query : ",this.$route)
     //매번 엘리먼트를 찾아오지 않기위해 mounted에 분리해둔 엘리먼트 찾기
-    console.log("mounted! finding element..")
+    // console.log("mounted! finding element..")
     this.el_scroll_window = document.querySelector(".scroll-window")
     this.el_wrapper = document.querySelector(".wrapper")
     var self = this

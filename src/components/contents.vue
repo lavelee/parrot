@@ -10,7 +10,7 @@
         <img v-bind:src=contents.img_thumbnail alt="background">
         <div class="card-texts">
           <p class="card-hashtags">
-            <span class="hashtag-single">333</span>
+            <span class="hashtag-single" v-for="hashtags in contents.hashtags">{{hashtags}}</span>
           </p>
           <p class="card-short-content">{{contents.content}}</p>
           <p class="card-date">{{contents.created_date.slice(0,16).replace("T"," ")}}</p>
@@ -81,6 +81,13 @@ export default {
         if(!this.next_postpage_link){
           this.last_post_notice=true
         }
+        //finding hashtag
+        for (var n in response.data.results){
+          var post = response.data.results[n]
+          post.hashtags=this.findHashtag(post.content)
+          console.log(post.hashtags)
+        }
+
         this.contents_list = this.contents_list.concat([response.data.results])
         if (initial){
           this.n_post_initial_page = this.contents_list[0].length
@@ -89,6 +96,14 @@ export default {
           window.eventbus.$emit('addpost_api_callfinished')
         }
       })
+    },
+
+    findHashtag(context){
+      var hashtags = context.match(/#[ㄱ-ㅎA-Za-z0-9가-힣_-]*/g)
+      for (var n in hashtags){
+        hashtags[n]=hashtags[n].replace("#","")
+      }
+      return hashtags
     }
   },
   created: function(){

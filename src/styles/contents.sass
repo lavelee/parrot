@@ -100,12 +100,19 @@ $card-transition-duration: 0.3s
 // 마우스 올릴시 보일것/안보일것 결정
 .card-single a
   .card-hashtags, .card-stars
+    $shadow-width: 1px
+    $shadow-color: rgba(240,240,240,0.8)
+    text-shadow: 1px 1px $shadow-width $shadow-color,-1px -1px $shadow-width $shadow-color,    1px -1px $shadow-width $shadow-color,    -1px 1px $shadow-width $shadow-color
+    font-size: 1em
+    font-weight: bold
     color: rgba(0,0,0,1)
     transition: all $card-transition-duration
   .card-date, .card-short-content, .card-distance, .card-replies
     color: rgba(0,0,0,0)
     transition: all $card-transition-duration
   &:hover
+    .card-hashtags, .card-stars
+      text-shadow: none
     .card-texts
       //현재 까만색 배경인데 가운데가 약간 밝은 그라데이션 쓰고픔
       background-color: rgba(0,0,0,0.7)
@@ -141,7 +148,32 @@ $card-transition-duration: 0.3s
   transform: translateY(30px)
 
 
-
-
-// 상세보기 창 구성
-.detail-view
+// 상세보기 창 구성, 기본 딤과 가운데배치
+.detail-view-dim
+  position: fixed
+  width: 100%
+  height: 100vh
+  background-color: rgba(0,0,0,0.85)
+  top: 0
+  left: 0
+  +flexCenter()
+  // display: none
+  // 바깥 경계
+  .detail-view
+    height: 70vh
+    width: auto
+    background-color: white
+  .carousel
+    float: left
+    height: 100%
+    width: 300px
+    background-color: yellow
+  .comment-area
+    float: left
+    height: 100%
+    width: 300px
+    background-color: lime
+  .comment-list
+    width: 100%
+    height: auto
+    border: 1px solid black

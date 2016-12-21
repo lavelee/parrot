@@ -33,8 +33,10 @@
 
 
   <!-- 상세보기시 뜨는 창 구성 -->
-  <section class="detail-view">
-    <!-- 캐러셀 부분 -->
+  <section v-if="post_id>0" class="detail-view-dim">
+    <!-- 본문부분 -->
+    <div class="detail-view">
+
     <div class="carousel">
 
     </div>
@@ -58,7 +60,10 @@
       </form>
     </div>
   </div>
+  </div>
   </section>
+
+
   </div>
 </template>
 
@@ -72,9 +77,11 @@ export default {
     return {
       contents_list: [],
       next_postpage_link: "",
-      api_post: "",
+      api_post: parrot.server_dir+'/post/',
       n_post_initial_page: 0,
-      last_post_notice: false
+      last_post_notice: false,
+      post_id: 10,
+      contents_detail: {}
     }
   },
   components: {   },
@@ -82,6 +89,7 @@ export default {
     addPostData(address,initial=false){
       this.axios.get(address).then((response) => {
         console.log("api responded")
+        console.log("response: ",response)
         this.next_postpage_link = response.data.next
         if(!this.next_postpage_link){
           this.last_post_notice=true
@@ -111,8 +119,22 @@ export default {
       return hashtags
     }
   },
+  updated: function(){
+    this.post_id = this.$route.query.post_id
+    if(this.post_id>1){
+      var address= this.api_post+this.post_id+"/"
+      // console.log("detail view required. postid is : ",this.post_id)
+      console.log("required address : ",address)
+      this.axios.get(address).then((response) => {
+        console.log("response: ",response)
+        this.contents_detail = response.data
+        console.log("post_detail",this.contents_detail)
+        //todo
+      })
+    }
+  },
   created: function(){
-    this.api_post = parrot.server_dir+'/post/'
+    // this.api_post =
     this.addPostData(this.api_post,true)
     //event emitted from layout.vue scroll trigger
     var self = this
@@ -125,5 +147,6 @@ export default {
 
 
 <style lang='sass'>
+  @import '../styles/modules.sass'
   @import '../styles/contents.sass'
 </style>

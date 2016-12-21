@@ -31,6 +31,7 @@ $card-transition-duration: 0.3s
   border-bottom: 1px solid silver
   margin-bottom: $vertical-box-spacing + 5px
   text-align: center
+  color: gray
 
 //개별 카드
 .card-single
@@ -130,15 +131,18 @@ $card-transition-duration: 0.3s
     font-family: FontAwesome
   &::after
     content: ' '
-.card-distance::before
-  content: '\f041'
+=fontIcon($content, $icon-fontsize: 0.8em,  $top: -1px)
+  content: $content
   font-family: FontAwesome
-.card-stars::before
-  content: '\f005'
-  font-family: FontAwesome
-.card-replies::before
-  content: '\f27a'
-  font-family: FontAwesome
+  font-size: $icon-fontsize
+  position: relative
+  top: $top
+.card-distance::before, .detail-distance::before
+  +fontIcon('\f041')
+.card-stars::before, .detail-stars::before
+  +fontIcon('\f005')
+.card-replies::before, .detail-replies::before
+  +fontIcon('\f27a')
 
 // transition
 .cardlist-enter-active, .cardlist-leave-active
@@ -159,21 +163,55 @@ $card-transition-duration: 0.3s
   +flexCenter()
   // display: none
   // 바깥 경계
-  .detail-view
+  .detail-view-wrapper
     height: 70vh
     width: auto
-    background-color: white
-  .carousel
+    // background-color: white
+    // border: 1px solid #333
+  .detail-view
+    position: relative
     float: left
     height: 100%
-    width: 300px
+    width: auto
     background-color: yellow
+    img
+      height: 100%
+      width: auto
+    .detail-texts
+      color: white
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translateX(-50%) translateY(-50%)
+      line-height: 1.5em
+      // font-weight: bold
+      text-shadow: 1px 1px 5px black, -1px -1px 5px black
   .comment-area
     float: left
     height: 100%
     width: 300px
-    background-color: lime
+    border: 3px solid gray
+    background-color: #eff
+    box-sizing: border-box
   .comment-list
     width: 100%
     height: auto
-    border: 1px solid black
+    padding-top: 10px
+    // line-height:
+    // border: 1px solid black
+.comment-contents
+  padding-bottom: 15px
+
+  //버튼
+.detail-prev, .detail-next, .detail-close
+  color: white
+  position: absolute
+  border: 1px solid gray
+  padding: 5px
+.detail-prev
+  left: 50px
+.detail-next
+  right: 50px
+.detail-close
+  top: 50px
+  left: 50%

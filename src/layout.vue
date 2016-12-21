@@ -105,7 +105,7 @@ export default {
   },
 
   mounted: function(){
-    console.log("this.$route.query : ",this.$route)
+    // console.log("this.$route.query : ",this.$route)
     //매번 엘리먼트를 찾아오지 않기위해 mounted에 분리해둔 엘리먼트 찾기
     // console.log("mounted! finding element..")
     this.el_scroll_window = document.querySelector(".scroll-window")
